@@ -1,0 +1,30 @@
+{
+  "name": "sirosfakhri.github.io",
+  "version": "1.0.0",
+  "description": "siros fakhri portfolio",
+  "main": "index.html",
+  "scripts": {
+    "serve": "live-server",
+    "dev": "npx tailwindcss -i ./src/style/style.css -o ./dist/style/css.css --watch",
+    "build": "npx tailwindcss -i ./src/style/style.css -o ./dist/style/css.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sirosfakhri/sirosfakhri.github.io.git"
+  },
+  "keywords": [
+    "sirosfakhri",
+    "siros",
+    "fakhri"
+  ],
+  "author": "siros fakhri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sirosfakhri/sirosfakhri.github.io/issues"
+  },
+  "homepage": "https://github.com/sirosfakhri/sirosfakhri.github.io#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.1",
+    "live-server": "^1.2.1"
+  }
+}
