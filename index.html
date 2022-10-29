@@ -28,34 +28,36 @@
 <body class="transition-all duration-300 bg-white dark:bg-body-dark"
       :class="toggleTopMenu ? 'overflow-y-hidden' : 'overflow-auto'"
       x-data="{ toggleTopMenu: false }" x-cloak>
-<header class="m-4 mt-8 lg:mx-16 flex items-center justify-between">
+<header class="m-4 mt-8 lg:mx-16 flex lg:grid grid-cols-1 lg:grid-cols-6 items-center justify-between">
     <!--Start Logo-->
-    <div>
+    <div class="lg:col-span-1">
         <img src="./dist/images/sirosfakhri.jpg" alt="siros fakhri" title="siros fakhri"
              class="h-16 w-16 rounded-full">
     </div>
     <!--End Logo-->
 
     <!--Start Nav-->
-    <div class="flex flex-row-reverse">
+    <div class="flex flex-row-reverse lg:col-span-5 lg:justify-between">
         <!--Start Toggle Top Menu-->
-        <div>
+        <div class="lg:order-2">
+
             <button class="block mx-2 lg:hidden" @click="toggleTopMenu = !toggleTopMenu">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-8 h-8 fill-rose-600">
                     <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
                 </svg>
             </button>
+
             <div
-                    class="w-full transition-all duration-300 bg-gray-500 dark:bg-gray-400 border-r-2 border-rose-100"
+                    class="w-full transition-all duration-300 bg-gray-500 dark:bg-gray-400 border-r-2 border-rose-100 lg:block lg:opacity-100 lg:translate-x-0 lg:border-none lg:static"
                     :class="{
                             'ease-in absolute -inset-0 left-0 z-50': toggleTopMenu === true,
                             'hidden translate-x-full ease-out bg-red-300 -left-[30em] ease-out opacity-0': toggleTopMenu === false
                             }">
                 <div
-                        class="flex w-[20rem] h-screen flex-col gap-y-3 px-4 text-white bg-gray-100 dark:bg-gray-500">
+                        class="flex w-[20rem] h-screen lg:h-fit lg:w-full flex-col gap-y-3 px-4 text-white bg-gray-100 dark:bg-gray-500 lg:dark:bg-body-dark lg:bg-white">
 
                     <!--Start Logo, Theme Mode & Close Top Menu-->
-                    <div class="flex flex-col gap-y-3 mt-8 border-b-2 border-gray-300 pb-6">
+                    <div class="flex flex-col gap-y-3 mt-8 border-b-2 border-gray-300 pb-6 lg:hidden">
                         <div class="flex flex-row  justify-between">
                             <div>
                                 <img src="./dist/images/sirosfakhri.jpg" alt="siros fakhri" title="siros fakhri"
@@ -105,19 +107,22 @@
 
                     <!--Start Top Menu-->
                     <nav
-                            class="flex flex-col gap-y-8 my-6 border-b-2 border-gray-300 pb-36 text-black dark:text-white font-medium">
+                            class="flex flex-col gap-y-8 lg:flex-row lg:gap-x-6 my-6 border-b-2 border-gray-300 pb-36 lg:pb-0 text-black dark:text-white font-medium lg:border-none">
                         <a href="#home"
-                           class="transition-all duration-300 pl-2 border-rose-300 hover:border-l-2">
+                           class="transition-all duration-300 pl-2 border-rose-300 hover:border-l-2 lg:hover:border-b-2 lg:hover:border-l-0">
                             HOME
                         </a>
-                        <a href="#features" class="transition-all duration-300 pl-2 border-rose-300 hover:border-l-2">FEATURES</a>
-                        <a href="#portfolio" class="transition-all duration-300 pl-2 border-rose-300 hover:border-l-2">PORTFOLIO</a>
-                        <a href="#contact" class="transition-all duration-300 pl-2 border-rose-300 hover:border-l-2">CONTACT</a>
+                        <a href="#features"
+                           class="transition-all duration-300 pl-2 border-rose-300 hover:border-l-2 lg:hover:border-b-2 lg:hover:border-l-0">FEATURES</a>
+                        <a href="#portfolio"
+                           class="transition-all duration-300 pl-2 border-rose-300 hover:border-l-2 lg:hover:border-b-2 lg:hover:border-l-0">PORTFOLIO</a>
+                        <a href="#contact"
+                           class="transition-all duration-300 pl-2 border-rose-300 hover:border-l-2 lg:hover:border-b-2 lg:hover:border-l-0">CONTACT</a>
                     </nav>
                     <!--End Top Menu-->
 
                     <!--Start Social-->
-                    <div>
+                    <div class="lg:hidden">
                         <p class="dark:text-white text-gray-800">YOU CAN FIND ME</p>
                         <div class="flex flex-row gap-x-3 my-4">
                             <a href=""
@@ -149,7 +154,7 @@
         <!--End Toggle Top Menu -->
 
         <!--Start Theme Mode -->
-        <button class="flex items-center hover:shadow-lg transition duration-300 ease-in"
+        <button class="flex items-center hover:shadow-lg transition duration-300 ease-in lg:order-1"
                 @click="darkMode = !darkMode">
             <svg :class="darkMode ? 'transition delay-300 hidden' : ''" xmlns="http://www.w3.org/2000/svg"
                  class="w-6 h-6 fill-slate-800" viewBox="0 0 512 512" fill="none">
