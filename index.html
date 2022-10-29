@@ -1,29 +1,254 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="" lang="en" dir="ltr" x-data="{ darkMode: localStorage.getItem('dark') === 'true', assetShown : true}"
+      x-init="$watch('darkMode', val => localStorage.setItem('dark', val))" :class="{ 'dark': darkMode }">
 <head>
     <meta charset="UTF-8">
     <title>Siros Fakhri</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Siros Fakhri" />
-    <meta name="keywords" content="Siros Fakhri" />
+    <meta name="description" content="Siros Fakhri"/>
+    <meta name="keywords" content="Siros Fakhri"/>
     <meta name="copyright" content="sirosfakhri.dev">
-    <meta name="language" content="en-us" />
-    <meta name="geo.region" content="IR" />
-    <meta name="image" content="./dist/images/favicon.png" />
-    <meta property="og:url" content="https://sirosfakhri.dev" />
-    <meta property="og:title" content="Hassan Aizmi -- Software Engineer - Web Developer" />
-    <meta property="og:type" content="article" />
-    <meta property="og:image" content="https://sirosfakhri.dev/dist/images/favicon.png" />
-    <meta property="og:description" content="Siros Fakhri" />
-    <meta property="article:author" content="https://www.facebook.com/sirosfakhri" />
+    <meta name="language" content="en-us"/>
+    <meta name="geo.region" content="IR"/>
+    <meta name="image" content="./dist/images/favicon.png"/>
+    <meta property="og:url" content="https://sirosfakhri.dev"/>
+    <meta property="og:title" content="Hassan Aizmi -- Software Engineer - Web Developer"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="https://sirosfakhri.dev/dist/images/favicon.png"/>
+    <meta property="og:description" content="Siros Fakhri"/>
+    <meta property="article:author" content="https://www.facebook.com/sirosfakhri"/>
 
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Siros Fakhri - Web Developer" />
-    <meta name="twitter:description" content="Software Engineer - " />
-    <meta name="twitter:image" content="https://sirosfakhri.dev/dist/images/favicon.png" />
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Siros Fakhri - Web Developer"/>
+    <meta name="twitter:description" content="Software Engineer - "/>
+    <meta name="twitter:image" content="https://sirosfakhri.dev/dist/images/favicon.png"/>
     <link rel="stylesheet" href="./dist/style/css.css">
+    <script defer src="./dist/js/alpine.v3.js"></script>
 </head>
-<body class="bg-gray-700">
-<h1 class="h-screen text-5xl text-rose-400 flex justify-center items-center">Soon...</h1>
+<body class="transition-all duration-300 bg-white dark:bg-body-dark"
+      :class="toggleTopMenu ? 'overflow-y-hidden' : 'overflow-auto'"
+      x-data="{ toggleTopMenu: false }" x-cloak>
+<header class="m-4 mt-8 lg:mx-16 flex items-center justify-between">
+    <!--Start Logo-->
+    <div>
+        <img src="./dist/images/sirosfakhri.jpg" alt="siros fakhri" title="siros fakhri"
+             class="h-16 w-16 rounded-full">
+    </div>
+    <!--End Logo-->
+
+    <!--Start Nav-->
+    <div class="flex flex-row-reverse">
+        <!--Start Toggle Top Menu-->
+        <div>
+            <button class="block mx-2 lg:hidden" @click="toggleTopMenu = !toggleTopMenu">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-8 h-8 fill-rose-600">
+                    <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+                </svg>
+            </button>
+            <div
+                    class="w-full transition-all duration-300 bg-gray-500 dark:bg-gray-400 border-r-2 border-rose-100"
+                    :class="{
+                            'ease-in absolute -inset-0 left-0 z-50': toggleTopMenu === true,
+                            'hidden translate-x-full ease-out bg-red-300 -left-[30em] ease-out opacity-0': toggleTopMenu === false
+                            }">
+                <div
+                        class="flex w-[20rem] h-screen flex-col gap-y-3 px-4 text-white bg-gray-100 dark:bg-gray-500">
+
+                    <!--Start Logo, Theme Mode & Close Top Menu-->
+                    <div class="flex flex-col gap-y-3 mt-8 border-b-2 border-gray-300 pb-6">
+                        <div class="flex flex-row  justify-between">
+                            <div>
+                                <img src="./dist/images/sirosfakhri.jpg" alt="siros fakhri" title="siros fakhri"
+                                     class="h-16 w-16 rounded-full">
+                            </div>
+                            <div class="flex flex-row-reverse gap-x-2 mx-2">
+                                <!--Start Close Top Menu -->
+                                <div
+                                        class="p-2 bg-slate-500 dark:bg-white rounded-full h-fit cursor-pointer group"
+                                        @click="toggleTopMenu = false">
+                                    <a @click="toggleTopMenu = false" class="hover:animate-spin">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
+                                             class="w-8 h-8 fill-rose-600">
+                                            <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <!--End Close Top Menu -->
+
+                                <!--Start Theme Mode -->
+                                <div class="p-3 bg-slate-500 dark:bg-white rounded-full h-fit cursor-pointer"
+                                     @click="darkMode = !darkMode">
+                                    <a class="flex hover:shadow-lg h-fit transition duration-300 ease-in">
+                                        <svg :class="darkMode ? 'transition delay-300 hidden' : ''"
+                                             xmlns="http://www.w3.org/2000/svg"
+                                             class="w-6 h-6 fill-slate-800" viewBox="0 0 512 512" fill="none">
+                                            <path
+                                                    d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/>
+                                        </svg>
+                                        <svg :class="darkMode ? '' : 'transition delay-300 hidden'"
+                                             xmlns="http://www.w3.org/2000/svg"
+                                             viewBox="0 0 512 512" class="w-6 h-6 fill-yellow-400" fill="none">
+                                            <path
+                                                    d="M120.2 154.2c4.672 4.688 10.83 7.031 16.97 7.031S149.5 158.9 154.2 154.2c9.375-9.375 9.375-24.56 0-33.93L108.9 74.97c-9.344-9.375-24.56-9.375-33.94 0s-9.375 24.56 0 33.94L120.2 154.2zM256 112c13.25 0 24-10.75 24-24v-64C280 10.75 269.3 0 256 0S232 10.75 232 24v64C232 101.3 242.8 112 256 112zM112 256c0-13.25-10.75-24-24-24h-64C10.75 232 0 242.8 0 256s10.75 24 24 24h64C101.3 280 112 269.3 112 256zM374.8 161.2c6.141 0 12.3-2.344 16.97-7.031l45.25-45.28c9.375-9.375 9.375-24.56 0-33.94s-24.59-9.375-33.94 0l-45.25 45.28c-9.375 9.375-9.375 24.56 0 33.93C362.5 158.9 368.7 161.2 374.8 161.2zM256 400c-13.25 0-24 10.75-24 24v64C232 501.3 242.8 512 256 512s24-10.75 24-24v-64C280 410.8 269.3 400 256 400zM120.2 357.8l-45.25 45.28c-9.375 9.375-9.375 24.56 0 33.94c4.688 4.688 10.83 7.031 16.97 7.031s12.3-2.344 16.97-7.031l45.25-45.28c9.375-9.375 9.375-24.56 0-33.93S129.6 348.4 120.2 357.8zM488 232h-64c-13.25 0-24 10.75-24 24s10.75 24 24 24h64C501.3 280 512 269.3 512 256S501.3 232 488 232zM391.8 357.8c-9.344-9.375-24.56-9.372-33.94 .0031s-9.375 24.56 0 33.93l45.25 45.28c4.672 4.688 10.83 7.031 16.97 7.031s12.28-2.344 16.97-7.031c9.375-9.375 9.375-24.56 0-33.94L391.8 357.8zM256 144C194.1 144 144 194.1 144 256c0 61.86 50.14 112 112 112s112-50.14 112-112C368 194.1 317.9 144 256 144z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <!--End Theme Mode -->
+                            </div>
+                        </div>
+
+                        <div class="text-base font-medium text-blue-400 dark:text-white">
+                            tell something from yourself
+                        </div>
+                    </div>
+                    <!--End Logo, Theme Mode & Close Top Menu-->
+
+                    <!--Start Top Menu-->
+                    <nav
+                            class="flex flex-col gap-y-8 my-6 border-b-2 border-gray-300 pb-36 text-black dark:text-white font-medium">
+                        <a href="#home"
+                           class="transition-all duration-300 pl-2 border-rose-300 hover:border-l-2">
+                            HOME
+                        </a>
+                        <a href="#features" class="transition-all duration-300 pl-2 border-rose-300 hover:border-l-2">FEATURES</a>
+                        <a href="#portfolio" class="transition-all duration-300 pl-2 border-rose-300 hover:border-l-2">PORTFOLIO</a>
+                        <a href="#contact" class="transition-all duration-300 pl-2 border-rose-300 hover:border-l-2">CONTACT</a>
+                    </nav>
+                    <!--End Top Menu-->
+
+                    <!--Start Social-->
+                    <div>
+                        <p class="dark:text-white text-gray-800">YOU CAN FIND ME</p>
+                        <div class="flex flex-row gap-x-3 my-4">
+                            <a href=""
+                               class="transition-all duration-300 ease-in-out p-4 hover:-translate-y-1 bg-gray-500 shadow-inner drop-shadow-md dark:shadow-sm dark:shadow-slate-200 dark:bg-box-dark rounded-lg hover:bg-slate-700 group">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                                     class="w-8 h-8 fill-slate-300 dark:fill-text-white group-hover:fill-[#C13584]">
+                                    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                                </svg>
+                            </a>
+                            <a href=""
+                               class="transition-all duration-300 ease-in-out p-4 hover:-translate-y-1 bg-gray-500 shadow-inner drop-shadow-md dark:shadow-sm dark:shadow-slate-200 dark:bg-box-dark rounded-lg hover:bg-slate-700 group">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-8 h-8 fill-slate-300 dark:fill-text-white group-hover:fill-[#0077b5]">
+                                    <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
+                                </svg>
+                            </a>
+                            <a href=""
+                               class="transition-all duration-300 ease-in-out p-4 hover:-translate-y-1 bg-gray-500 shadow-inner drop-shadow-md dark:shadow-sm dark:shadow-slate-200 dark:bg-box-dark rounded-lg hover:bg-slate-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"
+                                     class="w-8 h-8 fill-slate-300 dark:fill-text-white">
+                                    <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!--End Social-->
+                </div>
+            </div>
+        </div>
+        <!--End Toggle Top Menu -->
+
+        <!--Start Theme Mode -->
+        <button class="flex items-center hover:shadow-lg transition duration-300 ease-in"
+                @click="darkMode = !darkMode">
+            <svg :class="darkMode ? 'transition delay-300 hidden' : ''" xmlns="http://www.w3.org/2000/svg"
+                 class="w-6 h-6 fill-slate-800" viewBox="0 0 512 512" fill="none">
+                <path
+                        d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/>
+            </svg>
+            <svg :class="darkMode ? '' : 'transition delay-300 hidden'" xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 512 512" class="w-6 h-6 fill-yellow-400" fill="none">
+                <path
+                        d="M120.2 154.2c4.672 4.688 10.83 7.031 16.97 7.031S149.5 158.9 154.2 154.2c9.375-9.375 9.375-24.56 0-33.93L108.9 74.97c-9.344-9.375-24.56-9.375-33.94 0s-9.375 24.56 0 33.94L120.2 154.2zM256 112c13.25 0 24-10.75 24-24v-64C280 10.75 269.3 0 256 0S232 10.75 232 24v64C232 101.3 242.8 112 256 112zM112 256c0-13.25-10.75-24-24-24h-64C10.75 232 0 242.8 0 256s10.75 24 24 24h64C101.3 280 112 269.3 112 256zM374.8 161.2c6.141 0 12.3-2.344 16.97-7.031l45.25-45.28c9.375-9.375 9.375-24.56 0-33.94s-24.59-9.375-33.94 0l-45.25 45.28c-9.375 9.375-9.375 24.56 0 33.93C362.5 158.9 368.7 161.2 374.8 161.2zM256 400c-13.25 0-24 10.75-24 24v64C232 501.3 242.8 512 256 512s24-10.75 24-24v-64C280 410.8 269.3 400 256 400zM120.2 357.8l-45.25 45.28c-9.375 9.375-9.375 24.56 0 33.94c4.688 4.688 10.83 7.031 16.97 7.031s12.3-2.344 16.97-7.031l45.25-45.28c9.375-9.375 9.375-24.56 0-33.93S129.6 348.4 120.2 357.8zM488 232h-64c-13.25 0-24 10.75-24 24s10.75 24 24 24h64C501.3 280 512 269.3 512 256S501.3 232 488 232zM391.8 357.8c-9.344-9.375-24.56-9.372-33.94 .0031s-9.375 24.56 0 33.93l45.25 45.28c4.672 4.688 10.83 7.031 16.97 7.031s12.28-2.344 16.97-7.031c9.375-9.375 9.375-24.56 0-33.94L391.8 357.8zM256 144C194.1 144 144 194.1 144 256c0 61.86 50.14 112 112 112s112-50.14 112-112C368 194.1 317.9 144 256 144z"/>
+            </svg>
+        </button>
+        <!--End Theme Mode -->
+    </div>
+    <!--End Nav-->
+</header>
+
+<main>
+    <section class="container grid grid-cols-1 lg:grid-cols-2 lg:mt-16">
+        <div class="flex justify-center sm:mx-8 mt-8 lg:order-2">
+            <img src="./dist/images/hero.png" alt="siros fakhri"
+                 class="h-fit md:h-[45em] lg:h-[25em] bg-red-300 px-16 pt-8 rounded-lg">
+        </div>
+        <div class="mt-12 mx-8 lg:order-1">
+            <h3 class="uppercase font-medium dark:text-gray-300">Welcome To My World</h3>
+            <h3 class="my-4 dark:text-gray-300 font-bold text-4xl">
+                Hi, I’m
+                <span class="text-rose-600">Siros Fakhri</span>
+            </h3>
+            <h3 class="text-3xl font-medium dark:text-gray-300">
+                a Developer.
+            </h3>
+            <div class="my-8 text-base dark:text-gray-300">
+                <p>
+                    I use animation as a third dimension by which to simplify experiences and kuiding thro each and every interaction.
+                    I’m not adding motion just to spruce things up, but doing it in ways that.
+                </p>
+            </div>
+            <div class="flex flex-col items-center md:flex-row md:justify-between md:gap-x-3">
+
+                <!--Start Social-->
+                <div>
+                    <p class="font-medium dark:text-gray-300">YOU CAN FIND ME</p>
+                    <div class="flex flex-row gap-x-3 my-4">
+                        <a href=""
+                           class="transition-all duration-300 ease-in-out p-4 hover:-translate-y-1 bg-gray-500 shadow-inner drop-shadow-md dark:shadow-sm dark:shadow-slate-200 dark:bg-box-dark rounded-lg hover:bg-slate-700 group">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                                 class="w-8 h-8 fill-slate-300 dark:fill-text-white group-hover:fill-[#C13584]">
+                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                            </svg>
+                        </a>
+                        <a href=""
+                           class="transition-all duration-300 ease-in-out p-4 hover:-translate-y-1 bg-gray-500 shadow-inner drop-shadow-md dark:shadow-sm dark:shadow-slate-200 dark:bg-box-dark rounded-lg hover:bg-slate-700 group">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-8 h-8 fill-slate-300 dark:fill-text-white group-hover:fill-[#0077b5]">
+                                <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
+                            </svg>
+                        </a>
+                        <a href=""
+                           class="transition-all duration-300 ease-in-out p-4 hover:-translate-y-1 bg-gray-500 shadow-inner drop-shadow-md dark:shadow-sm dark:shadow-slate-200 dark:bg-box-dark rounded-lg hover:bg-slate-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"
+                                 class="w-8 h-8 fill-slate-300 dark:fill-text-white">
+                                <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <!--End Social-->
+
+                <!--Start Skill-->
+                <div>
+                    <p class="font-medium dark:text-gray-300 uppercase">My Best Skills</p>
+                    <div class="flex flex-row gap-x-3 my-4">
+                        <a href=""
+                           class="transition-all duration-300 ease-in-out p-4 bg-gray-500 hover:rotate-6 dark:bg-box-dark shadow-sm drop-shadow-md shadow-inner shadow-slate-200 rounded-lg dark:hover:bg-[#6C6C6C] hover:bg-[#6C6C6C] group">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                 class="w-8 h-8 fill-slate-300 dark:fill-text-white group-hover:fill-[#F05340]">
+                                <path d="M504.4,115.83a5.72,5.72,0,0,0-.28-.68,8.52,8.52,0,0,0-.53-1.25,6,6,0,0,0-.54-.71,9.36,9.36,0,0,0-.72-.94c-.23-.22-.52-.4-.77-.6a8.84,8.84,0,0,0-.9-.68L404.4,55.55a8,8,0,0,0-8,0L300.12,111h0a8.07,8.07,0,0,0-.88.69,7.68,7.68,0,0,0-.78.6,8.23,8.23,0,0,0-.72.93c-.17.24-.39.45-.54.71a9.7,9.7,0,0,0-.52,1.25c-.08.23-.21.44-.28.68a8.08,8.08,0,0,0-.28,2.08V223.18l-80.22,46.19V63.44a7.8,7.8,0,0,0-.28-2.09c-.06-.24-.2-.45-.28-.68a8.35,8.35,0,0,0-.52-1.24c-.14-.26-.37-.47-.54-.72a9.36,9.36,0,0,0-.72-.94,9.46,9.46,0,0,0-.78-.6,9.8,9.8,0,0,0-.88-.68h0L115.61,1.07a8,8,0,0,0-8,0L11.34,56.49h0a6.52,6.52,0,0,0-.88.69,7.81,7.81,0,0,0-.79.6,8.15,8.15,0,0,0-.71.93c-.18.25-.4.46-.55.72a7.88,7.88,0,0,0-.51,1.24,6.46,6.46,0,0,0-.29.67,8.18,8.18,0,0,0-.28,2.1v329.7a8,8,0,0,0,4,6.95l192.5,110.84a8.83,8.83,0,0,0,1.33.54c.21.08.41.2.63.26a7.92,7.92,0,0,0,4.1,0c.2-.05.37-.16.55-.22a8.6,8.6,0,0,0,1.4-.58L404.4,400.09a8,8,0,0,0,4-6.95V287.88l92.24-53.11a8,8,0,0,0,4-7V117.92A8.63,8.63,0,0,0,504.4,115.83ZM111.6,17.28h0l80.19,46.15-80.2,46.18L31.41,63.44Zm88.25,60V278.6l-46.53,26.79-33.69,19.4V123.5l46.53-26.79Zm0,412.78L23.37,388.5V77.32L57.06,96.7l46.52,26.8V338.68a6.94,6.94,0,0,0,.12.9,8,8,0,0,0,.16,1.18h0a5.92,5.92,0,0,0,.38.9,6.38,6.38,0,0,0,.42,1v0a8.54,8.54,0,0,0,.6.78,7.62,7.62,0,0,0,.66.84l0,0c.23.22.52.38.77.58a8.93,8.93,0,0,0,.86.66l0,0,0,0,92.19,52.18Zm8-106.17-80.06-45.32,84.09-48.41,92.26-53.11,80.13,46.13-58.8,33.56Zm184.52,4.57L215.88,490.11V397.8L346.6,323.2l45.77-26.15Zm0-119.13L358.68,250l-46.53-26.79V131.79l33.69,19.4L392.37,178Zm8-105.28-80.2-46.17,80.2-46.16,80.18,46.15Zm8,105.28V178L455,151.19l33.68-19.4v91.39h0Z"/>
+                            </svg>
+                        </a>
+                        <a href=""
+                           class="transition-all duration-300 ease-in-out p-4 bg-gray-500 hover:rotate-6 dark:bg-box-dark shadow-sm drop-shadow-md shadow-inner shadow-slate-200 rounded-lg dark:hover:bg-[#474A8A] hover:bg-[#474A8A] group">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
+                                 class="w-8 h-8 fill-slate-300 dark:fill-text-white group-hover:fill-white">
+                                <path d="M320 104.5c171.4 0 303.2 72.2 303.2 151.5S491.3 407.5 320 407.5c-171.4 0-303.2-72.2-303.2-151.5S148.7 104.5 320 104.5m0-16.8C143.3 87.7 0 163 0 256s143.3 168.3 320 168.3S640 349 640 256 496.7 87.7 320 87.7zM218.2 242.5c-7.9 40.5-35.8 36.3-70.1 36.3l13.7-70.6c38 0 63.8-4.1 56.4 34.3zM97.4 350.3h36.7l8.7-44.8c41.1 0 66.6 3 90.2-19.1 26.1-24 32.9-66.7 14.3-88.1-9.7-11.2-25.3-16.7-46.5-16.7h-70.7L97.4 350.3zm185.7-213.6h36.5l-8.7 44.8c31.5 0 60.7-2.3 74.8 10.7 14.8 13.6 7.7 31-8.3 113.1h-37c15.4-79.4 18.3-86 12.7-92-5.4-5.8-17.7-4.6-47.4-4.6l-18.8 96.6h-36.5l32.7-168.6zM505 242.5c-8 41.1-36.7 36.3-70.1 36.3l13.7-70.6c38.2 0 63.8-4.1 56.4 34.3zM384.2 350.3H421l8.7-44.8c43.2 0 67.1 2.5 90.2-19.1 26.1-24 32.9-66.7 14.3-88.1-9.7-11.2-25.3-16.7-46.5-16.7H417l-32.8 168.7z"/>
+                            </svg>
+                        </a>
+                        <a href=""
+                           class="transition-all duration-300 ease-in-out p-4 bg-gray-500 hover:rotate-6 dark:bg-box-dark shadow-sm drop-shadow-md shadow-inner shadow-slate-200 rounded-lg dark:hover:bg-[#E34C26] hover:bg-[#E34C26] group">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-8 h-8 fill-slate-300 dark:fill-text-white group-hover:fill-white">
+                                <path d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <!--End Skill-->
+            </div>
+        </div>
+    </section>
+</main>
+
 </body>
 </html>
